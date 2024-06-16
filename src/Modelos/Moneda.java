@@ -66,7 +66,14 @@ public class Moneda {
     }
 
     public String toString(String busqueda, String opcionDeConversion, double cantidadAConvertir, String formatoDouble){
-        return "\nConversion de divisa \n{La divisa base es: " + busqueda +
+        return "\nConversion de divisa numero " +  " \n{La divisa base es: " + busqueda +
+                ", Divisa de conversion: " + opcionDeConversion +
+                ", Monto: " + cantidadAConvertir +
+                ", Conversion: " + formatoDouble + "}";
+    }
+
+    public String toString(String busqueda, String opcionDeConversion, double cantidadAConvertir, String formatoDouble, int contador){
+        return "\nConversion de divisa numero " + contador + " \n{La divisa base es: " + busqueda +
                 ", Divisa de conversion: " + opcionDeConversion +
                 ", Monto: " + cantidadAConvertir +
                 ", Conversion: " + formatoDouble + "}";

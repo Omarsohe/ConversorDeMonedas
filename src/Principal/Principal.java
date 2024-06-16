@@ -78,6 +78,7 @@ public class Principal {
 
                 //variabale para repetir
                 boolean repetir = false;
+                int contador = 0;
                 do {
                     //conversiones
                     double conversion = 0;
@@ -89,33 +90,39 @@ public class Principal {
                     //eleccion de divisa a convertir
                     String opcionDeConversion = JOptionPane.showInputDialog("Divisa a la que desea converitr 'USD', 'PEN', 'COP' 'MXN', 'ARS': ");
                     lista.add(String.valueOf(tipoDeCambio.toString(busqueda)));
+                    contador ++;
 
                     switch (opcionDeConversion) {
                         case "mxn", "MXN":
                             conversion = moneda.aMxn(cantidadAConvertir, mxnRate);
                             String formatoDouble = String.format("%.2f", conversion);
+                            JOptionPane.showMessageDialog(null, "Resumen" + tipoDeCambio.toString(busqueda) + moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
                             //De esta manera hacemos un cast de un double a un String  System.out.println(conversion + "");
-                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
+                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
                             break;
                         case "ars", "ARS":
                             conversion = moneda.aArs(cantidadAConvertir, argRate);
                             formatoDouble = String.format("%.2f", conversion);
-                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
+                            JOptionPane.showMessageDialog(null, "Resumen" + tipoDeCambio.toString(busqueda) + moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
+                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
                             break;
                         case "cop", "COP":
                             conversion = moneda.aCop(cantidadAConvertir, copRate);
                             formatoDouble = String.format("%.2f", conversion);
-                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
+                            JOptionPane.showMessageDialog(null, "Resumen" + tipoDeCambio.toString(busqueda) + moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
+                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
                             break;
                         case "pen", "PEN":
                             conversion = moneda.aPen(cantidadAConvertir, penRate);
                             formatoDouble = String.format("%.2f", conversion);
-                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
+                            JOptionPane.showMessageDialog(null, "Resumen" + tipoDeCambio.toString(busqueda) + moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
+                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
                             break;
                         case "usd", "USD":
                             conversion = moneda.aUsd(cantidadAConvertir, usdRate);
                             formatoDouble = String.format("%.2f", conversion);
-                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
+                            JOptionPane.showMessageDialog(null, "Resumen" + tipoDeCambio.toString(busqueda) + moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
+                            lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble, contador));
 
                             break;
                         default:
@@ -123,13 +130,19 @@ public class Principal {
                             break;
                     }
 
+                    //JOptionPane.showMessageDialog(null, "Resumen" + lista);
+
+
                     int opcionDos = Integer.parseInt(JOptionPane.showInputDialog("Digite 1.Si desea convertir otra cantidad " +
                             "\n2. Si desea cambair de divisa base" +
                             "\n3. Si desea salir del la aplicación"));
                     if (opcionDos == 1) {
+                        //Opción para no agregar a la lista
                         repetir = true;
+
                     } else if (opcionDos == 2) {
                         repetir = false;
+
                     } else if (opcionDos == 3) {
                         salida = true;
                         repetir = false;
