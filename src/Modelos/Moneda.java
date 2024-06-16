@@ -66,7 +66,7 @@ public class Moneda {
     }
 
     public String toString(String busqueda, String opcionDeConversion, double cantidadAConvertir, String formatoDouble){
-        return "{La divisa base es: " + busqueda +
+        return "\nConversion de divisa \n{La divisa base es: " + busqueda +
                 ", Divisa de conversion: " + opcionDeConversion +
                 ", Monto: " + cantidadAConvertir +
                 ", Conversion: " + formatoDouble + "}";

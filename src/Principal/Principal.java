@@ -2,6 +2,7 @@ package Principal;
 
 import Modelos.Divisas;
 import Modelos.Moneda;
+import Modelos.TipoDeCambio;
 import com.google.gson.*;
 import com.google.gson.stream.MalformedJsonException;
 
@@ -72,6 +73,7 @@ public class Principal {
 
                 //Convertir el record a una instancia de la clase propia
                 Moneda moneda = new Moneda(misDivisas);
+                TipoDeCambio tipoDeCambio= new TipoDeCambio(misDivisas);
                 //System.out.println(moneda);
 
                 //variabale para repetir
@@ -85,37 +87,33 @@ public class Principal {
                     double cantidadAConvertir = Double.parseDouble(JOptionPane.showInputDialog("Cantiidad que desea convertir: "));
 
                     //eleccion de divisa a convertir
-                    String opcionDeConversion = JOptionPane.showInputDialog("Divisa a la que desea converitr: ");
+                    String opcionDeConversion = JOptionPane.showInputDialog("Divisa a la que desea converitr 'USD', 'PEN', 'COP' 'MXN', 'ARS': ");
+                    lista.add(String.valueOf(tipoDeCambio.toString(busqueda)));
 
                     switch (opcionDeConversion) {
                         case "mxn", "MXN":
                             conversion = moneda.aMxn(cantidadAConvertir, mxnRate);
-                            System.out.println(conversion);
                             String formatoDouble = String.format("%.2f", conversion);
                             //De esta manera hacemos un cast de un double a un String  System.out.println(conversion + "");
                             lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
                             break;
                         case "ars", "ARS":
                             conversion = moneda.aArs(cantidadAConvertir, argRate);
-                            System.out.println(conversion);
                             formatoDouble = String.format("%.2f", conversion);
                             lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
                             break;
                         case "cop", "COP":
                             conversion = moneda.aCop(cantidadAConvertir, copRate);
-                            System.out.println(conversion);
                             formatoDouble = String.format("%.2f", conversion);
                             lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
                             break;
                         case "pen", "PEN":
                             conversion = moneda.aPen(cantidadAConvertir, penRate);
-                            System.out.println(conversion);
                             formatoDouble = String.format("%.2f", conversion);
                             lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
                             break;
                         case "usd", "USD":
                             conversion = moneda.aUsd(cantidadAConvertir, usdRate);
-                            System.out.println(conversion);
                             formatoDouble = String.format("%.2f", conversion);
                             lista.add(moneda.toString(busqueda, opcionDeConversion, cantidadAConvertir, formatoDouble));
 
@@ -149,6 +147,6 @@ public class Principal {
 
             } while (salida == false) ;
 
-            JOptionPane.showMessageDialog(null, "Gracias por usar nuestro servicio. A continuación le mostramos un resumen de sus conversiones de divisas \n" + lista);
+            JOptionPane.showMessageDialog(null, "Gracias por usar nuestro servicio. A continuación le mostramos el tipo de cambio de sus divisas y un resumen de sus conversiones realizadas \n" + lista);
     }
 }
